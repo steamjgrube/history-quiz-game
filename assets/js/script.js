@@ -11,7 +11,7 @@ var questionDiv = document.querySelector("#questionDiv");
 var container = document.querySelector("#container");
 
 
-$(timer).on("click", function () {
+$(timer).on("click", function () { //onclick event to start the timer, display the time in the corner and display a message when the time is up. 
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
@@ -29,7 +29,7 @@ $(timer).on("click", function () {
 
 var ulCreate = document.createElement("ul");
 
-function renderQuestion(questionIndex) {
+function renderQuestion(questionIndex) { // function to clear the page and render the questions in a list format
     $(questionDiv).html("");
     $(ulCreate).html("");
     for (var i = 0; i < questions.length; i++) {
@@ -45,20 +45,20 @@ function renderQuestion(questionIndex) {
         listItem.addEventListener("click", (compareAnswer));
     })
 }
-function compareAnswer(event) {
+function compareAnswer(event) { // function to compare the user answer to the correct answer
     console.log(event);
     var element = event.target;
 
     if (element.matches("li")) {
 
-        var createDiv = document.createElement("div");
-        $(createDiv).attr("id", "createDiv");
+        var createDiv = document.createElement("div"); //assignment
+        $(createDiv).attr("id", "createDiv"); //
         if (element.textContent == questions[questionIndex].answer) {
             score++;
-            $(createDiv).text("Correct! The answer is:  " + questions[questionIndex].answer);
+            $(createDiv).text("Correct! The answer is:  " + questions[questionIndex].answer); // createDiv for the message displayed after correct answer
         } else {
-            secondsLeft = secondsLeft - penalty;
-            $(createDiv).text("Incorrect! The correct answer is:  " + questions[questionIndex].answer);
+            secondsLeft = secondsLeft - penalty; // factoring in the time deduction
+            $(createDiv).text("Incorrect! The correct answer is:  " + questions[questionIndex].answer); // createDiv for the incorrect answer message
         }
 
     }
@@ -89,7 +89,7 @@ function timesUp() {
 
     questionDiv.appendChild(createP);
 
-    if (secondsLeft >= 0) {
+    if (secondsLeft >= 0) { // If time left is less than or equal to 0 display the final score message and append it to questionDiv, also clear the time interval.
         var timeRemaining = secondsLeft;
         var createP2 = document.createElement("p");
         clearInterval(holdInterval);
@@ -114,4 +114,5 @@ function timesUp() {
     $(questionDiv).append(createLabel);
     $(questionDiv).append(createInput);
     $(questionDiv).append(createSubmit);
+
 }
