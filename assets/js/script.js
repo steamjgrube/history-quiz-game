@@ -8,10 +8,9 @@ var penalty = 5;
 var timeLeft = document.querySelector("#timeLeft");
 var timer = document.querySelector("#startQuiz");
 var questionDiv = document.querySelector("#questionDiv");
-var container = document.querySelector("#container");
 
 
-$(timer).on("click", function () { //onclick event to start the timer, display the time in the corner and display a message when the time is up. 
+$(timer).on("click", function () { //onclick event to start the timer, display the timer and display a message when the time is up. 
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
@@ -35,7 +34,7 @@ function renderQuestion(questionIndex) { // function to clear the page and rende
     for (var i = 0; i < questions.length; i++) {
         var userQuestion = questions[questionIndex].title;
         var userChoices = questions[questionIndex].choices;
-        questionDiv.textContent = userQuestion;
+        questionDiv.textContent = userQuestion; // I was unable to get the questions to be randomly chosen, so for now they just run through in order.
     }
     userChoices.forEach(function (newQ) {
         var listItem = document.createElement("li");

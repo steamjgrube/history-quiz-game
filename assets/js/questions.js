@@ -1,4 +1,4 @@
-var questions = [
+var questions = [  ///Questions array
     {
         title:"Which event triggered World War One?",
         choices: ["The sinking of the Lusitania", "Germany's invasion of Poland", "The assassination of Archduke Francis Ferdinand", "The tsar's refusal of an offer to visit Germany"],
